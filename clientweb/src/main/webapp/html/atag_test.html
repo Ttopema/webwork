@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>하이퍼링크(aTag) 사용방법</title>
+</head>
+<body>
+	<h2>하이퍼링크 - lounge.html을 상대경로와 절대경로로 연걸</h2>
+	<!-- 이미지 클릭하면 다른 html로 연결 -->
+	<a href="./media/image2.html"target="_blank"><img src="/clientweb/images/animal.jpg" width="300" height="300"/></a>
+	<a href="http://10.10.0.120:8088/clientweb/html/lounge.html"target="_self">문서연결(절대경로)self</a>
+	<a href="/clientweb/html/lounge.html"target="_blank">문서연결(절대경로)blank</a>
+	<br/>
+	<a href="lounge.html"target="_self">문서연결(상대경로self)</a>
+	<a href="./lounge.html"target="_blank">문서연결(상대경로)blank</a>
+	<br></br>
+	<a href="https://www.naver.com" target="_self">사이트 연결(naver)self</a>
+	<a href="https://www.google.com"target="_blank">사이트 연결(구글)blank</a>
+</body>
+</html>

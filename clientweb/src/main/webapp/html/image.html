@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지Tag 사용방법</title>
+	</head>
+	<body>
+		<!-- 이미지삽입
+		    => img태그의 src속성에 이미지의 경로 추가
+		    
+		    path를 적용(이미지, 하이퍼링크,  css파일,js파일, 백엔드어플리케이션 연결 등 경로가 나오면 다)
+		    
+		    /context명/폴더명/폴더명...../이미지파일명(확장자까지 포함하기)
+		  -->
+		<h2>절대경로</h2>
+		<img src="/clientweb/images/animal.jpg"/>
+		<img src="http://10.10.0.120:8088/clientweb/images/animal.jpg"/>
+		<h2>상대경로</h2>
+		<img src="../images/animal2.jpg"/>
+		<!-- 깨진 이미지 대신에 보여줄 문자 -->
+		<img src="clientweb/images/animal2.jpg" alt = "상대 경로로 찾는 동물 이미지"/>
+		<img src="./images/animal2.jpg"/>
+		
+		<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20151208_37%2Fartinhouse05_14495695418830t5hl_JPEG%2Ftumblr_nxv94fyLul1ralhjko1_500.jpg&type=sc960_832"/>
+		<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20151208_37%2Fartinhouse05_14495695418830t5hl_JPEG%2Ftumblr_nxv94fyLul1ralhjko1_500.jpg&type=sc960_832"/>
+	</body>
+</html>

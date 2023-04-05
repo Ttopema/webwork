@@ -1,0 +1,211 @@
+apache.org
+http://127.0.0.1:8088
+http://10.10.0.201:8088
+
+
+http://ip:port/
+http://127.0.0.1:8088
+ => web server나 web application server프로그램을 설치한 컴퓨터는 웹에서 서비스를 제공할 수 있는 
+      웹서버가 된다.
+ => web application은 웹에서 실행되는 프로그램을 의미
+      html, jsp, php ,js파일을 의미
+ => was(Web Application Server)에서 인식하는 기본 위치에서 index로 시작하는 파일을 찾아서 실행한다.
+ => 어떤 was를 설치했냐에 따라서 기본으로 인식하는 위치는 달라질 수 있다.
+ => 기본으로 인식하는 폴더가 아닌 경우 요청하는 방법은
+     http://127.0.0.1:8088/web에서 서비스할 수 있는 파일들이 저장되어 있는 폴더/web application 파일명
+                                 -----------------------------------------------------------------
+                                          web application디렉토리
+                                          context
+                               => root폴더만 context 명을 쓰지 않고 요청
+
+ => JEUS,JBOSS, weblogic,websphere,tomcat등의 프로그램이 web application server            
+ => 톰캣을 설치하는 경우 web application 디렉토리로 인식되기 위해서 tomcat설치 폴더에 있는 webapps에 
+      폴더를 만들거나 서버가 인식할 수 있도록 설정해야 한다.      
+                            ----------------------------------
+                              server.xml에 등록해야 한다.
+                           <Context docBase="실제경로" path="/요청path"/>
+ 
+      http://10.10.0.201:8088/docs/api/index.html
+     ------    ------------ ----- ------- ---- ----------
+   프로토콜     ip       port   context  |  web application
+                                                   |
+                                                   |_____ 폴더
+
+      ex) http://127.0.0.1:8088/manager/index.jsp
+            http://127.0.0.1:8088/docs/index.html
+            http://127.0.0.1:8088/test/hi.html
+            http://127.0.0.1:8088/edu/hi.html
+            
+
+   [미션]
+    examples 컨텍스트의 servlets폴더의  cookies.html파일을 실행하고
+    examples 컨텍스트의 jsp폴더의 index.html파일을 실행한 결과를 캡쳐해서 전송하기
+     http://127.0.0.1:8088/examples/servlets/cookies.html
+      http://127.0.0.1:8088/examples/jsp/index.html
+
+	http://10.10.0.201:8088/edu/hi.html
+
+
+    [미션]
+    - [webworkexam] 워크스페이스만들기
+    - [webtest] dinamic webproject만들기
+   - html,jsp,css,workspace모두 utf-8로 인코딩 설정하기
+    - 서버설정하고
+    - hello.html만들기
+    - 크롬으로 실행결과 캡쳐
+    - 이클립스 구조 캡쳐
+    제출
+
+   [web application  폴더의 구조]
+   => 어떤 WAS(web application server)를 쓰냐와 상관없이 표준화된 구조로 web application폴더를 작성해야 한다.
+                                                                                                       -------------------------
+                                                                                                            context
+   => 웹에서 서비스가 되려면 반드시 아래와 같이 표준화된 폴더구조를 갖도록 만들어야 하고 정확하게
+        정해진 위치에 web application파일을 만들어야 한다.
+
+   +---------------------+
+   |     context         |
+   +---------------------+
+            |
+            |---------+-------+
+            |         |폴더    |  
+            |         +--------+
+            |-------- 이미지파일, html파일,  js파일, css파일, jsp파일
+            |
+            |---------+--------------+
+                      | WEB-INF     |
+                      +--------------+
+                                 | ------------------web.xml      설정정보를 정의하는 설정파일
+                                 |______________+--------+ 
+                                 |              | lib    |         라이브러리파일이 위치하는 폴더(jdbc라이브러리)
+                                 |              +--------+
+                                 |---------------+-------------+       
+                                                 | classes     |    서블릿디렉토리(서블릿클래스와 자바클래스가 위치하는 폴더)
+                                                 +-------------+
+
+
+
+   
+  [front-end기술]
+  => 웹표준을 지켜서 개발해야 한다.
+  => 웹표준이라는 것은 웹에서 사용되는 표준기술이나 규칙
+     -----------
+        이 표준화를 담당하는 기관 W3C
+  => 전 세계 개발자들이 모두 사용하는 기술
+  => 크롬, 엣지, 파이어폭스(모질라재단), 사파리(애플), 오페라와 같은 브라우저 위에서 동작
+  => 브라우저를 만든 회사가 다르므로 브라우저마다 약간씩 다르게 동작하기도 한다.
+     (크로스브라우징)
+  => 웹표준에 맞는 html 버전은 HTML5
+     http://html5test.com/
+     - HTML
+     - CSS
+     - javascript
+     
+  1. HTML(HyperText MarkUp Language)
+     - 웹 페이지의 구조를 담당
+     - 웹 페이지를 구성하는 구성요소를 정의하는 역할
+     - Tag로 구성
+     - Tag를 작성방법
+      <시작태그 속성1="속성값1" 속성2="속성값2"></종료태그>
+       :속성은 태그마다 다른 속성이 적용
+       :모든 태그에서 공통으로 사용되는 속성(id,class,title,style)
+      
+     1) 문서구조
+        ① doctype
+        <!DOCTYPE html>
+         - 문서의 형식이 웹표준으로 정의된 HTML5형식이라는 의미  
+         - doctype은 document type difinition
+           --------
+            DTD
+         - 웹브라우저가 어떤 html버전으로 페이지를 분석하고 페이지에 작성된
+           코드에 맞게 화면에 어떻게 출력해야 하는지 정보를 알려주는 작업  
+           
+        ② html태그
+          - 웹페이지의 시작
+          
+        ③ head태그    
+       		 <head>
+				<meta charset="UTF-8">
+				<title>Insert title here</title>
+			</head>
+		  - 웹브라우저가 해석해야 하는 웹 페이지의 정보를 정의
+		                         -------------
+		                           인코딩, 반응형웹에 대한 정의
+		                           타이틀,아이콘....
+		                           
+		  - css와 자바스크립트의 사용정보를 정의
+		  
+		④ body태그
+		  - 브라우저에 표시할 컨텐츠를 정의
+		       
+     2) 기본태그   
+     3) 이미지
+        - path를 적용
+        - 이미지, 하이퍼링크,  css파일,js파일, 백엔드어플리케이션 연결 등 경로가 나오면 모두 동일하게 적용
+        - 모든 path는 서버가 인식하는 표준화된 폴더구조를 기준으로 생각한다.
+                                ----------------
+                    C:\javaweb\work\webwork\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps
+        ① 상대경로
+          => 현재 문서의 위치를 기준으로 경로를 파악할 수 있도록 정의
+          => 현재 요청된 문서의 위치를 기준으로 src에 명시된 경로를 찾는다.
+          <img src="clientweb/images/bts.jpg">
+          - 현재 요청된 image.html 문서는 /clientweb/html이 위치이므로 이 위치에서 clientweb/images폴더를 찾는다.
+          
+        ② 절대경로
+           => 이미지가 위치하는 경로의 full name 을 모두 적용
+           => 서버의 위치값까지 모두 적용
+                  --------
+                     ip와 context
+           => 절대경로에서 ip는 생략가능
+           => path가 /로 시작하면 절대경로   
+           => /는 root를 의미       
+           <img src="http://10.10.0.201:8088/clientweb/images/bts.jpg">
+           <img src="/clientweb/images/bts.jpg">
+           
+     4)하이퍼링크
+       -클릭하면 다른 문서나 사이트로 이동할 수 있도록 연결
+       -문서내에서 이동 가능
+       -<a>클릭할 문자열이나 이미지</a>
+        href속성 : 연결할 문서 혹은 사이트의 주소(path - 절대, 상대 주소 모두 이미지에서 작업하는 것과 동일) 
+                  _self : 현재 문서 위에서 연결되는 것
+                  _blank : 새 탭에서 실행되도록 작업하는 것  
+     5) 리스트
+     6) 테이블(표)
+     7) form태그(양식태그)
+        - 서버와 통신하기 위해 사용자의 입력을 받을 수 있도록 지원 
+        
+        
+        
+  2. CSS
+     - 시각적인 표현을 담당
+     - HTML로 만들어진 웹페이지를 예쁘게 꾸미고 레이아웃을 정의하는 일을 담당
+     - css적용을 없애기 위한 자바스크립트 코드 
+       document.head.parentNode.removeChild(document.head)
+       
+  3. javascript
+     - 웹 페이지를 구성하는 콘텐츠를 바꾸거나 움직이거나 동작시키는 동적 처리를 담당
+     - 웹 페이지를 사용하는 사용자와 상호동작할 수 있도록 처리
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

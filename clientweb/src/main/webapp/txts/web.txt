@@ -1,0 +1,322 @@
+tomcat설치
+https://apache.org/
+https://tomcat.apache.org/
+
+맥에서 받는 방법
+https://velog.io/@diduya/macOS%EC%97%90-Homebrew%EB%A1%9C-Apache-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
+https://scv-life.tistory.com/229
+아니면
+홈페이지에서 core에 있는 2번째거
+tar.gz 다운받기
+tar명령어 이용해서 압축을 풀어야함
+
+
+
+window에서 받은 버젼은 9.0.73
+<page1>
+체크 다함
+커넥터포트 디폴트가 8080
+오라클도 8080임
+즉, 포트가 겹침 => 충돌함
+그래서 8088로 바꿔서 사용
+
+user name
+password입력하기
+
+
+<page2>
+경로 일단 디폴트
+
+<page3>
+경로 디폴트
+
+run풀고
+
+finish
+
+다 깔고
+https://tomcat.apache.org/whichversion.html 들어가서
+버젼확인
+
+monitor tomcat
+
+
+
+
+
+
+
+
+
+C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps\ROOT 기본으로 여기를 인식함
+
+
+
+
+
+=================================================================================================
+http://ip:port/
+
+=> wdb server나 web application server 프로그램을 설치한 컴퓨터는 웹에서 서비스를 제공할 수 있는 웹 서버가 된다.
+=> web application은 웹에서 실행되는 프로그램을 의미
+     .html, .jsp, .php, .js파일을 의미 ....
+=> was(WebApplicationserver) 에서 인식하는 기본 위치에서 index로 시작하는 파일을 찾아서 실행한다.
+=> 어떤 was를 설치했냐에 따라서 기본으로 인식하는 위치는 달라질 수 있다.
+=> 기본으로 인식하는 폴더가 아닌 경우 요청하는 방법은
+     http://127.0.0.1:8088/web에서 서비스 할 수 있는 파일들이 저장되어 있는 폴더/파일 이름
+                                -----------------------------------------------------------------
+                                          web application 디렉토리
+                                          context
+                                => root폴더만 context명을 쓰지않고 요청 즉, root는 context 생략 가능
+=> JEUS, JBOSS, weblogic, websphere, tomcat등의 프로그렘이 web application server
+=> tomcat 설치하는 경우 wev application 디렉토리로 인식되기 위해서 tomcat설치 폴더에 있는 webapps에
+     폴더를 만들거나 서버가 인식할 수 있도록 설정해야한다.
+		  --------------------------------------------
+		  server.xml에 등록해야 한다.
+		 <Context docbase="실제경로"path
+<Context path="/edu"docBase="C:\javaweb\edu" debug="0" reloadable="true"/>
+
+          http://10.10.0.120:8088/docs/api/index.html
+          -----   ------------ ----- ----- ---- ---------
+       프로토콜    ip      port context 폴더   webapplication
+        
+
+     ex)  http://127.0.0.1:8088/manager/index.jsp
+          http://127.0.0.1:8088/docs/index.html
+          http://127.0.0.1:8088/test/hi.html
+          http://127.0.0.1:8088/edu/hi.html
+
+
+[미션]
+examples context의 servlets폴더의 cookies.html파일을 실행하고
+examples contexgt의 jsp폴더의 index.html파일을 실행한 결과를 캡쳐해서 전송하기
+
+http://localhost:8088/examples/servlets/cookies.html
+http://localhost:8088/examples/jsp/
+
+
+*Tomcat 9.0/conf/에서 server.xml에서 맨 밑에 경로 추가해주면 기본 경로가 바뀜
+ex) <Context path="/edu"docBase="C:\javaweb\edu" debug="0" reloadable="true"/>
+
+*만약 server start했는데 계속 빨간불이라면?
+
+*localhost_access_log는 작업 기록이 남음
+접속기록? ip다 뜸
+그 데이터는 어마어마해서 로그만 관리하는 프로그램도 따로 있음
+
+*서버는 server.xml파일로 실행이 됨.
+
+
+*이클립스랑 같이 하는법
+=>
+웹이랑 같이 할때는 java ee로 선택
+좌측에 create a dynamic wdb project로 파일 만들기
+프로젝트이름: clientweb
+none
+4.0
+디폴트
+
+==>next누르고 넘어가기
+경로 나오는데 그냥 넘어거기 ==> 자바클래스 저장하는 곳(일반 클래스, 서블릿 클래스, jdbc클래스)
+
+
+context root랑
+content directory나옴 ==>웹 에플리케이션이 저장될 위치
+                                    ------------------
+		           front-end 기술, html, css, javascript, jsp, 이미지파일 등
+즉 건들지 않기
+
+밑에 체크항목은 체크해서 사용하자 => finsh
+
+
+
+
+
+파일 만들고 패키지 만들면 f5눌러줘야 안으로 들어감
+
+
+webapp에다가 html만들기
+
+preperance에서 css,html,jsp file 전부 UTF-8 맨 위에 있는걸로 설정해주기
+
+general->content type에서 javascript source file에서 UTF-8 확인
+
+
+**서버등록
+밑에 서버에서 링크 클릭후
+tomcat9.0버전 선택후 next
+톰캣 인스톨레이션 디렉토리는
+C:\Program Files\Apache Software Foundation\Tomcat 9.0로 설정
+clientweb을 옮겨주고 finish
+
+등록후 
+서버에서 서버 더블클릭 후 admin의 포트번호를 8005번으로 잡아주기
+
+**서버시작 해야함
+
+
+그리고 작성해놓은 html파일와서 오른쪽 클릭후 run as하면 localhost밑에 서버가 뜰거임
+클릭하고 next하면 이미 clientweb이 서버에 올라가있는 모습을 볼 것임 ==> 클릭해서 올려야함
+그리고 finish
+여기서는 기본으로 마이크로엣지가 기본으로 잡힐거임 ==> 이거변경하자 =>preference에서 general =>
+web browser에서 크롬선택
+
+[web application 폴더의 구조]
+=> 어떤WAS(web application server)를 쓰냐와 상관없이 표준회된 구조로 web application폴더를 작성해야 한다.
+															---------------
+															context
+=>웹에서 서비스가 되려면 반드시 아랴와 같이 표준화된 폴더구조를 갖도록 만들어야 하고 정확하게
+  정해진 위치에 web applicating파일을 만들어 한다.
+  
+  *시험문제*
+  웹 서비스를 하려면 이러한 폴더 구조가 되어있어야 서비스가 가능하다.
+  서블릿을 실행하기 위함임
+  +---------------------+
+  |      context        |
+  +---------------------+
+           |              +---+
+           |--------------|폴더|
+           |              +---+
+           |--------------이미지파일, html파일, js파일, css파일, jsp파일
+           |
+           |
+           |--------------+-------+
+                          |WEB-INF|
+                          +-------+
+                              |---------------web.xml 설정정보를 정의하는 설정파일
+                              |
+                              |---------------+---+
+                              |               |lib|  라이브러리파일이 위치하는 폴더(jdbc라이브러리)
+                              |               +---+ 
+                              |
+                              |---------------+-------+
+                                              |classes| 서블릿디렉토리(서블릿클래스와 자바클래스가 위치하는 폴더)
+                                              +-------+               
+
+
+C:\javaweb\work\webwork\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\clientweb
+서버가 실제로 인식하는 파일 위치
+Ant가 자동으로 해주고 있기 때문에 가능한 것이다.
+만약 이클립스를 쓰지 않는다면 위 처럼 파일구조를 만들어서 사용해야한다.
+
+[front-end기술]
+=> 웹표준을 지켜서 개발해야 한다.
+=> 웹표준이라는 것은 웹에서 사용되는 표준기술이나 규칙
+   -----------
+   이 펴준화르 담당하는 W3C
+=>전 세계 개발자들이 모두 사용하는 기술
+=>크롬, 엣지, 파이어폭스(모질라재단), 사파리(애플), 오페라와 같은 브라우저 위에서 동작
+  (크로스 브라우징)
+=> 웹표준에 맞는 html 버전은 HTML5
+https://html5test.com/
+
+1.HTML(HyperText MarUp Language)
+  -웹 페이지의 구조를 담당
+  -웹 페이지를 구성하는 구성요소를 정의하는 역할
+  -Tag로 구성
+  -Tag를 작성하는 방법
+  <시작태그>속성1="속성값1" 속성2="속성값2"</종료태그>
+  :속성은 태그마다 다른 속성이 적용
+  :모든 태그에서 공통으로 사용되는 속성(id,class,title,style)
+  
+  1)문서구조
+    <!DOCTYPE html>
+   -1 doctype
+    - 문서의 형식이 웹표준으로 정의된 HTML5형식이라는 의미
+    - doctype은 document type difinition
+      -------
+      DTD
+    - 웹브라우저가 어떤 html버전으로 페이지를 분석하고 페이지에 작성된
+      코드에 맞게 화면에 어떻게 출력해야 하는지 정보를 알려주는 작업
+      
+    -2 html태그
+     -웹페이지의 시작  
+      
+    -3 head태그
+     <head>
+	 	<meta charset="UTF-8">
+	 	<title>Insert title here</title>
+	 </head>
+	   -웹브라이주가 해석해야 하는 웹 페이지의 정보를 정의
+	                        -------------
+	                        인코딩, 반응형웹에 대한 정의
+	                        타이틀, 아이콘.....
+	   -css와 자바스크립트의 사용정보를 정의
+	   
+	 -4 body태그
+	  -브라우저에 표시할 컨텐츠를 정의
+	  
+  2)기본태그
+  3)이미지
+   - path를 적용
+        - 이미지, 하이퍼링크,  css파일,js파일, 백엔드어플리케이션 연결 등 경로가 나오면 모두 동일하게 적용
+        - 모든 path는 서버가 인식하는 표준화된 폴더구조를 기준으로 생각한다.
+                                ----------------
+                    C:\javaweb\work\webwork\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps
+        ① 상대경로
+          => 현재 문서의 위치를 기준으로 경로를 파악할 수 있도록 정의
+          => 현재 요청된 문서의 위치를 기준으로 src에 명시된 경로를 찾는다.
+          <img src="clientweb/images/animal.jpg">
+          - 현재 요청된 image.html 문서는 /clientweb/html이 위치이므로 이 위치에서 clientweb/images폴더를 찾는다.
+          -.의 의미는 현재 디렉토리
+            <img src="./images/animal2.jpg"/>
+          -..의 의미는 상위 디렉토리
+            <img src="../images/animal2.jpg"/>
+          
+        ② 절대경로
+           => 이미지가 위치하는 경로의 full name 을 모두 적용
+           => 서버의 위치값까지 모두 적용
+                  --------
+                     ip와 context
+           => 절대경로에서 ip는 생략가능
+           => path가 /로 시작하면 절대경로   
+           => /는 root를 의미       
+           <img src="http://10.10.0.120:8088/clientweb/images/animal.jpg">
+                     ------------------
+                           root
+           <img src="/clientweb/images/animal.jpg"> //제일 많이씀.
+           
+  4)하이퍼링크
+    -클릭하면 다른 문서나 사이트로 이동할 수 있도록 연결
+    -문서내에서 이동 가능
+    -<a>클릭할 문자열이나 이미지</a>
+     href속성 : 연결할 문서 혹은 사이트의 주소(path - 절대, 상대 주소 모두 이미지에서 작업하는 것과 동일)
+     taget속성 : 하이퍼링ㅋ크로 연결된 문서 혹은 사이트가 실행될 위치를 정의할 때 사용하는 속성
+                _self : 현재 문서 위에서 연결되는 것
+                _blank : 새 탭에서 실행되도록 작업하는 것    
+  5)리스트
+  6)테이블(표)
+  7)form태그(양식태그)
+    -서버와 통ㄴ신하기 위해 사용자의 입력을 받을 수 있도록 지원
+    -<form></form>사이에 추가해서 사용한다.
+     action속성과 method속성을 정의해야 한다.
+     <form method="요청방식" action="요청할 web application의 path">
+                  --------
+     			  클라이언트가
+     			  서버로 요청을 어떤 방식으로
+     			  보낼 것인지 명시
+     			  get이나 post 방식으로 요청
+     			  생략하면 get방식
+     </form>
+     
+    - submit이라는 버튼을 눌렀을 때 <form></form>사이에 정의된 모든 앵식 태그들의 입력값들이 서버로 전송된다.
+      이때 action에 명시한 application이 실행된다.
+    - 요청 방식
+      get방식 : 서버의 데이터를 가져오기 위한 방식
+               주소표시줄에 입력한 내용이 노출(요청헤더에 사용자가 입력한 데이터가 추가되어 전송)
+               4000byte정도를 서버로 넘길 수 있다.
+      post방식 : 사용자가 입력한 내용이 요청메시지의 바디에 추가되어 전송되므로 주소표시줄에 노출되지 않는다.
+                길이제한
+                파일업로드는 무조건 post방식으로 처리해야 한다.
+    - 서버로 데이터를 전송하는 경우 서버에서 값을 구분할 수 있도록 반드시 name속성을 정의해야 한다.
+                            	       	             ------------------
+                            	       	             ★엄청 중요함
+2.CSS
+  -시각적인 표현을 담당
+  -HTML로 만들어진 웹 페이지를 예쁘게 꾸미고 레이아웃을 정의하는 일을 담당한다.
+  -css적용을 없애기 위한 자바스크립트 코드
+   document.head.parentNode.removeChild(document.head)
+3.javascript
+  -웹 페이지를 구성하는 콘텐츠를 바꾸거나 움직이거나 동작시키는 동적 처리를 담당
+  -웹 페이지를 사용하는 사용자와 상호동작할 수 있도록 처리
+
