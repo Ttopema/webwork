@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>선택자 연습3</title>
+		<style type="text/css">
+			/* .subject span:first-child{ 첫번째 자식요소를 지칭함 즉, 첫번째 자식요소가 span이라면 빨간색이 된다.
+				color: red;
+			}
+			
+			.subject h2:last-child{ 첫번째 자식요소를 지칭함
+				color: blue;
+			}
+			span { inline태그, 글자를 독립적인 요소로 만들기 위해서 사용 (따라서  width속성을 줄 수 없다.)
+				width: 500px;
+				background-color: yellow;
+			} */
+			
+			/* .subject *:nth-child(3){
+				color: red;
+			} */
+			
+			/* 짝수선택
+			.subject *:nth-child(2n) {
+				color: blue;
+			} */
+			
+			.subject *:nth-child(2n+1) {
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="subject">
+			<span>자바</span>
+			<span>JDBC</span>
+			<div>서블릿</div>
+			<p>JSP</p>
+			<h2>스프링</h2>
+			
+		</div>
+		
+	</body>
+</html>
