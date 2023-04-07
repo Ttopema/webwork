@@ -1,0 +1,31 @@
+@charset "UTF-8";
+body{
+	
+	font-size: 9pt;
+}
+
+h1 {
+	color: #509ea3;
+	
+}
+
+#outer{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#box {
+	background-image: url("../../images/background.gif");
+	background-repeat: no-repeat;
+	background-color: #a7cece;
+	border: solid white 1px;
+	padding: 20px;
+	margin: 20px;
+	font-style: italic;
+	height: 70px;
+	width: 900px;
+	padding-left: 70px; 
+	overflow: auto; /* 글자가 넘어갈 경우 */
+}

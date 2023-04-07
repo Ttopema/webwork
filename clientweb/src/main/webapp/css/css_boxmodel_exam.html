@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>박스모델 연습하기</title>
+		<style type="text/css">
+			#box1 {
+				position: absolute;
+				left: 600px;
+				top: 100px;
+				width: 200px;
+				height: 200px;
+				border-style: solid;
+				border-width: 20px;
+				border-color: blue;
+				background-color: white;
+				z-index: 4;	
+			}
+			#box2 {
+				position: absolute;
+				left: 480px;
+				top: 130px;
+				width: 150px;
+				height: 140px;
+				border-style: solid;
+				border-width: 15px;
+				border-color: green;
+				background-color: white;
+				z-index: 1;
+			}
+			#box3 {
+				position: absolute;
+				left: 310px;
+				top: 220px;
+				width: 160px;
+				height: 160px;
+				border-style: solid;
+				border-width: 15px;
+				border-color: red;
+				background-color: white;
+				z-index: 3;
+			}
+			#box4 {
+				position: absolute;
+				left: 400px;
+				top: 310px;
+				width: 205px;
+				height: 205px;
+				border-style: solid;
+				border-width: 13px;
+				border-color: yellow;
+				background-color: white;
+				z-index: 3;
+			}
+			#box5 {
+				position: absolute;
+				left: 460px;
+				top: 390px;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 50px;
+				z-index: 5
+			}
+			#box6 {
+				position: absolute;
+				left: 530px;
+				top: 430px;
+				font-family:  Arial Black, Helvetica, sans-serif;
+				font-size: 60px;
+				z-index: 6
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<div id="box4"></div>
+		<div id="box5">Microsoft</div>
+		<div id="box6">Internet Explorer</div>
+	</body>
+</html>

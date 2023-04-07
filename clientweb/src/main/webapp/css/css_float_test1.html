@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			#outer {
+				width: 1000px;
+				margin-left: auto;
+				margin-right: auto;
+				border: solid orange 1px;
+			}
+			
+			#mydiv1 {
+				border: solid 1px black;
+				width: 300px;
+				background-color:  yellow;
+				float: left;
+			
+			}
+			
+			#mydiv2 {
+				border: solid 1px black;
+				width: 300px;
+				background-color:  red;
+				float: right;
+			
+			}
+			
+			#mydiv3 {
+				border: solid 1px black;
+				width: 300px;
+				background-color:  blue;
+				float: right; /* 플로팅이 웹 문서에서 부분적으로 적용이 된 경우에 다른 요소들에 영향을 줄 수 있다. 
+				                 영향을 받아 문서가 제대로 출력되지 않는 상황을 없애기 위해서 플로팅을 해제할 수 있어야함
+				                 특정 box영역에 대해서 플로팅을 해제
+				                 플로팅을 해제하기 위해서
+				                 clear : left | right | both
+				                 
+				                 */
+				                 		
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<div id="mydiv1">플로팅은 문서의 흐름을 제어한다</div>
+			<div id="mydiv2">플로팅은 문서의 흐름을 제어한다</div>
+			<div id="mydiv3">플로팅은 문서의 흐름을 제어한다</div>		
+		
+		
+		</div>
+	</body>
+</html>
