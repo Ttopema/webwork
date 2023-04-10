@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css_transition_test</title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: orange;
+				transition: 1s; /* 효과의 지속시간은 반드시 명시 - second(1s -1초) */
+				transition:
+					width .5s,s
+					background-color 2s; /* 색깔에도 시간을 줄 수 있음 */
+				
+			}
+			
+			div:active { /* div가 하나 더 생기는 느낌인데 동적인 느낌이 있음 */
+				width: 300px;
+				background-color: royalblue;
+				
+			}
+			
+		
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

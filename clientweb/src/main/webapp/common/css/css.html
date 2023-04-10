@@ -1,0 +1,45 @@
+-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			#outer {
+				width: 600px;
+				height: 600px;
+				background-color: pink;
+				display: flex;  /* 옆으로 정렬 */
+				flex-wrap:  wrap; /* 백그라운드에 맞춰서 아래로 떨어짐 */
+				justify-content: flex-end; /* 오른쪽으로 밀어버림 */
+			 	align-content: center;
+				
+			}
+			
+			
+			#outer .item {
+				width: 100px;
+				height: 100px;
+				border:  solid 1px blue;
+				background-color: orange;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+		
+		</div>
+		
+	</body>
+</html>
