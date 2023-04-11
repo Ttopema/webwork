@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			document.write("<table border='1'>");
+			document.write("<tr>");
+			document.write("<td>1</td><td>2</td><td>3</td>");
+			document.write("</tr>");
+			document.write("<tr>");
+			document.write("<td>1</td><td>2</td><td>3</td>");
+			document.write("</tr>");
+			document.write("<tr>");
+			document.write("<td>1</td><td>2</td><td>3</td>");
+			document.write("</tr>");
+			document.write("</table");
+			document.write("<img src='/clientweb/images/flower1.png'>");
+			
+			//if중첩하기
+			var num = prompt("숫자를 입력하세요:");
+			if(num==null){
+				alert("취소버튼을 누르지 마세요");
+			}
+			else{
+				if(num%5==0){
+					document.write("<h1>5의 배수</h1>");
+					document.write("<img src='/clientweb/images/flower1.png'>");
+				}
+				else{
+					
+					document.write("<h1>5의 배수가 아니다.</h1>");
+					document.write("<img src='/clientweb/images/flower2.png'>");
+				}
+			}
+			
+			
+			
+			
+		
+		</script>		
+	</body>
+</html>

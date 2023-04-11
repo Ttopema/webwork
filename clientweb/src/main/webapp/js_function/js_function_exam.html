@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function printGugu() {
+					dan = 1;
+					document.write("<table border='1'>");
+					for (i = 1; i <= 9; i++) {
+						document.write("<tr>");
+						document.write("<td><h3>" + dan + "*" + i + "=" + (dan * i)
+								+ "</h3></td>");
+						document.write("</tr>");
+					}
+					document.write("</table>" + "</br>");
+				
+			}
+			
+			function getSum(start, end) {
+				sum = 0;
+				for(i=start;i<=end; i++){
+					sum = sum + i
+				}
+				
+				return sum;
+			}
+			
+			function calc(num1, num2, operater ) {
+				result = 0;
+				if(operater == "+"){
+					result = num1 + num2;
+				}
+				else if(operater == "-"){
+					result = num1 - num2;
+				}
+				else if(operater == "*"){
+					result = num1 * num2;
+				}
+				else if(operater == "/"){
+					result = num1 / num2;
+				}
+				return result;
+			}
+	
+	</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			printGugu();
+			document.write("<h1>" + getSum(1,10) + "</h1>");
+			document.write("<h1>" + calc(3, 5, "*")+ "</h1>");
+		</script>
+
+	</body>
+</html>

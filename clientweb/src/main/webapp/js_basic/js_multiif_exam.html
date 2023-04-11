@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- prompt로 숫자 점수를 입력받아서 수, 우, 미, 양, 가 출력 
+		     100점 이상이나 0점 미만의 점수를 입력받으면 "점수 잘못입력" 출력
+		     document.write(<h1>태그)로 출력
+		     prompteh parseInt로 number타입으로 변환해서 작업
+		-->
+	<script type="text/javascript">
+		var score = parseInt(prompt("점수를 입력하세요"));
+		if (score > 100 | score < 0) {
+			document.write("점수 잘못입력");
+		} else {
+			if (score >= 90) {
+				document.write("수");
+			} else if (score >= 80) {
+
+				document.write("우");
+			} else if (score >= 70) {
+
+				document.write("미");
+			}
+			else if (score >= 60) {
+
+				document.write("양");
+			}
+			else{
+				document.write("가");
+			}
+		}
+	</script>
+</body>
+</html>
