@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function calc() {
+				//name속성이 myform1인 form객체 내부에 정의된 name이 num1인 텍스트상자에 입력된 값을
+				//읽어서 num1변수에 저장
+				var num1 = myform1.num1.value; // value속성이 getter로 사용
+				console.log(num1);
+				myform1.num3.value = num1 * 1.2 + 1000; // value속성이 setter로 사용
+			}
+			
+			function calc2() {
+				//name속성이 myform1인 form객체 내부에 정의된 name이 num1인 텍스트상자에 입력된 값을
+				//읽어서 num1변수에 저장
+				var num1 = myform1.num2.value; // value속성이 getter로 사용
+				console.log(num2);
+				myform1.num3.value = num2 * 1.2 + 1000; // value속성이 setter로 사용
+			}
+			function showdiv() {
+				//num1텍스트에 입력한 값을 읽어서 div에 출력
+				var numvalue = myform1.num1.value;
+				//id가 result인 html요소를 찾아온다.
+				var mydiv = document.getElementById("result");
+				//찾아온 html요소에 문자열을 추가하기 - div, span, p태그에서 사용할 수 있는 속성
+				mydiv.innerHTML = "<h1>안녕하세요 값은: " + numvalue + "입니다.</h1>";
+			}
+			/* run버튼 만들기 
+			   body태그 내부에서 정의된 폼3개에서 동일한 작업을 하는 경우
+			   함수를 갯수만큼 만들어서 작업하지 않고 폼내부에서 버튼을 누를때마다
+			   현재 작업중인 폼의 정보를 함수의 매개변수로 넘기고 작업
+			   ------------------
+			       this.form
+			   */
+			function run(workingform) {
+				var num1 = workingform.num1.value;
+				//alert(num1);
+				workingform.num2.value = num1 * 2;
+				workingform.num3.value = num1 * 3;
+				workingform.num4.value = num1 * 4;
+				
+			}
+		</script>
+	</head>
+	<body onload="alert('환영합니다.')">
+		<!-- 키보드와 폼객체에 관련된 이벤트 -->
+		<form name="myform1">
+			<input type="text" name="num1" onkeyup="calc()"/>
+			<input type="text" name="num2" onchange="calc2(s)"/>
+			<input type="text" name="num3"/>
+			<input type="text" name="num4" onfocus="showdiv()"/>
+			<input type="button" value="전송1" onclick="run(this.form)"/>
+			
+		</form>
+		<form name="myform1">
+			<input type="text" name="num1" onkeyup="calc()"/>
+			<input type="text" name="num2" onchange="calc2(s)"/>
+			<input type="text" name="num3"/>
+			<input type="text" name="num4" onfocus="showdiv()"/>
+			<input type="button" value="전송2" onclick="run(this.form)"/>
+			
+		</form>
+		<form name="myform1">
+			<input type="text" name="num1" onkeyup="calc()"/>
+			<input type="text" name="num2" onchange="calc2(s)"/>
+			<input type="text" name="num3"/>
+			<input type="text" name="num4" onfocus="showdiv()"/>
+			<input type="button" value="전송3" onclick="run(this.form)"/>
+			
+		</form>
+		<hr/>
+		<!-- 텍스트상자에서 입력한 내용이 웹페이지에 출력되도록 출력될 위치에 div추가 -->
+		<div id="result" style="color: red; font-weight: bold;"></div>
+		
+		
+		<!-- 마우스관련이벤트 -->
+		<img alt="SES" src="/clientweb/images/animal.jpg" name="myimg"
+		     onmouseover="myimg.src='../images/animal2.jpg'"
+		     onmouseout="myimg.src='../images/animal.jpg'"
+		     
+		/>
+	</body>
+</html>

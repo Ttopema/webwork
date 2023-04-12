@@ -3,13 +3,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<script type="text/javascript">
+			
+		</script>
 	</head>
 	<body>
 		<script type="text/javascript">
 		var today = new Date();
 		var hour = today.getHours;
 		var day = today.getDay();
-		if(hour > 12){
+		if(hour < 12){
 			switch(day){
 			case 0:
 				document.write("<img src=\"/clientweb/images/jang1.jpg\">");
@@ -75,6 +78,21 @@
 			}
 			
 		}
+		/* 
+		var today = new Date();
+		var hour = today.getHours;
+		var day = today.getDay();
+		if(hour < 12){
+			document.bgColor = "green";
+		}
+		else {
+			document.bgColor = "red";
+		}
+		
+		document.write("<img src=\"/clientweb/images/jang" + (day) + ".jpg\">");
+		
+		*/
+		
 		</script>
 	</body>
 </html>

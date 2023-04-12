@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var today = new Date();
+		var hour = today.getHours;
+		var day = today.getDay();
+		if (hour < 12) {
+			document.bgColor = "green";
+		} else {
+			document.bgColor = "red";
+		}
+
+		document.write("<img src=\"/clientweb/images/jang" + (day + 1) + ".jpg\">");
+	</script>
+</body>
+</html>

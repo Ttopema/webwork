@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//자바스크립트 배열
+			//=> 5개의 요소를 가지는 배열을 생성
+			var myarr = new Array(5);
+			var myarr2 = new Array("html", "css", "javascript", "jqeury");
+			
+			myarr[0] = "html";
+			myarr[1] = "css";
+			myarr[2] = "javascript";
+			myarr[3] = "jqeury";
+			document.write("<h3>배열의 0번요소: " + myarr[0] +"</h3>");
+			document.write("<h3>배열의 요소갯수: " + myarr.length +"</h3>");
+			
+			//배열에 저장된 모든 요소를 출력하기
+			//-index가 있으므로 for
+			for (var i = 0; i < myarr.length; i++) {
+				document.write("<h3>배열의 "+ i +"번요소: " + myarr[i] +"</h3>");
+			}
+			document.write("<hr>");
+			for (var i = 0; i < myarr2.length; i++) {
+				document.write("<h3>배열의 "+ i +"번요소: " + myarr2[i] +"</h3>");
+			}
+		</script>
+	</body>
+</html>

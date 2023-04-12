@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function calc() {
+				//1. 사용자가 입력한 수량을 가져오기
+				var countVal = document.getElementById("num1").value;
+				//2.계산
+				var result = countVal * 12900 * 0.9; 
+				//3. span에 결과 출력
+				document.getElementById("sumval").innerHTML = result
+				
+			}
+		</script>
+	</head>
+	<body>
+		<form name="myform">
+			수량: <input type="text" name="count" onkeyup="calc()" id="num1"/>
+				 <span id="sumval"></span>
+		</form>
+	</body>
+</html>

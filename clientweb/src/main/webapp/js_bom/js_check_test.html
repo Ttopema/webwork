@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//모두체크/해제 체크박스를 체크하면 foot이름으로 정의된 모든 체크박스가 선택되도록
+//이미 선택된 상태면 체크박스의 선택이 해제되도록 작업 ==> 체크값이 다른거랑 똑같다? 로 접근?
+	function allcheck() {
+		//alert("allcheck");
+		//1. name이 allcheck라는 이름으로 정의된 체크박스의 상태값을 가져오기
+		// ===> check박스의 checked속성이 체크 유무를 저장하고 있는 값
+		var chkVal = cbfmt.allchk.checked
+		//alert(chkVal);
+		//2. food라는 name으로 정의된 모든 체크박스를 받아오기
+		// ===> name, class속성이 동일한 모든 html요소나 동일한 태그들 처럼 여러개가 반환되는
+		//      html요소는 NodeList로 내부에서 관리되고 이는 배열처럼  생각할 수 있다.
+		// ===> NodeList는 배열처럼 관리
+		var mychecklist = cbfmt.food; // 여러개니까 배열로 접근을 한걸까??
+		/* alert(mychecklist);
+		alert(mychecklist.length); */
+		//3. mychecklist에 담긴 체크박스들의 모든 상태값을 allcheck의 값과 동일하도록 변경
+		for (i = 0; i < mychecklist.length; i++) {
+			//food체크박스의 모든 체크상태를 allchk의 체크상태와 동일하게 설정
+			mychecklist[i].checked = chkVal;
+		}
+	
+	}
+	function ckFunc() {
+		//체크된 항목의 value를 id가 result인 div에 출력하기
+		//1.마찬가지로 food라는 이름으로 정의된 체크박스 목록을 받아오고,
+		var mychecklist = cbfmt.food;
+		var checkStr = " "; //체크된 food의 value를 연결할 문저열 변수
+		//2.체크 유무를 확인하고
+		for (var i = 0; i < mychecklist.length; i++) {
+			if(mychecklist[i].checked){
+				checkStr = checkStr + mychecklist[i].value + " ";
+				
+			}
+		}
+		//3.result에 출력하기
+		document.getElementById("result").innerHTML = checkStr;
+	}
+</script>
+</head>
+<body>
+		<form name="cbfmt">
+			<label>아이스크림</label> 
+			<input type="checkbox" name="food"
+			 value="아이스크림" id="ice"> 
+				<label>커피</label> <input type="checkbox"	
+				name="food" value="커피" id="coffee">
+				 <label>음료수</label> <input type="checkbox" 
+				 name="food" value="음료수" id="beverage"> 
+				<label>모두체크/해제</label>
+			<input type="checkbox" name="allchk" 
+			id="allchk" onclick="allcheck()" ><br> <!-- checked="checked" 체크가 된 상태로 시작 --> 
+
+			<input type="button" value="전송" onclick="ckFunc()">
+		</form>
+		<div id="result"></div>
+</body>
+</html>
