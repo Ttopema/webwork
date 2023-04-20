@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+	</head>
+	<body>
+		<div id="main">
+			<div class="test1">jquery</div>
+			<div class="test2">jquery</div>
+			<div id="test3">jquery</div>
+			<div id="test4">jquery</div>
+			<div id="test5">jquery</div>
+		</div>
+		<p>jquery연습중</p>
+		<a id="attrtest1">하이퍼링크</a>
+		<a id="attrtest2">하이퍼링크</a>
+		<div id="result" style="color: blue;" class="myclass"></div>
+		<form>
+			<input type="button" id="htmlbtn" value="html태그 추가하기">
+			<input type="button" id="attrbtn" value="속성추가하기">
+		</form>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				console.log("한라인씩코드실행");
+				for(i=0;i<5;i++){
+					console.log(i);
+				}
+				$("#htmlbtn").on("click", function(){
+					$("#result").html("<h1>추가되는 문자열</h1>");
+					
+				});
+				
+				$("#attrbtn").on("click", function(){
+					$("#attrtest1").attr("href", "https://www.naver.com");
+					//id가 result로 정의된 div태그의 class속성을 alert로 출력
+					alert($("#result").attr("class")); //속성명만 attr메소드에 정의하면 getter역할
+					$("#attrtest2").attr({"href" : "https://www.naver.com", "target" : "_blank"});
+				});
+				
+			})		
+		</script>
+	</body>
+</html>

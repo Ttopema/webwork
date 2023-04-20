@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery</title>
+		<link rel="stylesheet" type="text/css" href="/clientweb/css/my_style2.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".gardenimg").on("mouseover", function(){
+					//계속 누적되기 때문에 data를 mouseover밖에 정의하거나
+					//지우는 작업
+					var rand = Math.floor(Math.random()*10) + 500;
+					var data = $("<p>방문자수:" +rand +  "</p>");
+					$(".gardenimg p").remove();
+					$(this).append(data);
+				});
+			});
+			
+		</script>
+		
+	</head> 
+	<body>
+		<div id="header">
+			<h2>아침고요수목원</h2>
+		</div>
+		<div id="main">
+			<div itemtype="button" class="gardenimg"><img src="../images/m_garden01.jpg" /></div>
+			<div itemtype="button" class="gardenimg"><img src="../images/m_garden02.jpg"/></div>
+			<div itemtype="button" class="gardenimg"><img src="../images/m_garden03.jpg"/></div>
+			<div itemtype="button" class="gardenimg"><img src="../images/m_garden05.jpg"/></div>
+		</div>
+		
+		<script>
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
