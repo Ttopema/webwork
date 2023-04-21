@@ -143,6 +143,88 @@
 		<input type="submit" value="로그인"/>
 	</form>
 	
+   4)자바스크립트로 서블릿 요청하기
+   
+[요청재지정]
+-클라이언트가 최초 요청한 서블릿을 응답하지 않고 다른 web application(html, jsp, 다른 서블릿)이 응답되도록
+ 서블릿 내부에서 재요청하는 것을 의미
+-서블릿에서 뷰를 분리하기 위해서 반드시 알아야 하는 개념
+
+
+1.데이터공유
+  -데이터공유가 가능한 scope는 page, request, session, application이 있다.
+  -모든 scope를 담당하는 객체가 존재하며 이 객체 내부에넌 데이터를 공유할 수있도록 Map구조의 저장소(모델)를 가지고 있다
+  																		 ---------
+  1)scope																	 name과 value를 한 쌍으로 저장(공유)
+    -1page(javax.servlet.jsp.PageContext)
+      --현재 jsp페이지에서 데이터공유
+   
+    -2request(javax.servlet.ServletRequest)
+      --한 번의 요청으로 실행되어 응답되는 모든 web Application이 데이터를 공유 
+    -3session(javax.servlet.ServletContext)
+    -4application(javax.servlet.ServletContext) 
+  2)데이터 공유
+    scope객체.setAttribute("공유될 데이터의 이름", 공유될 객체)
+                           ----------        --------
+                           공유될 attribute   자바에서 사용되는 모든 객체를 공유할 수 있다.
+                                            사용자정의로 만들어지는 객체의 예측이 불가능하므로 타입은Object
+  3)공유된 데이터를 꺼내기
+    -공유된 데이터의 타입은 Object이므로 실제 저장된 객체로 Casting해야한다.
+     공유한 객체타입 변수 = (공유한 객체타입) scope객체.getAttribute("공유된 데이터의 이름")
+                        -----------
+                        공유될때 타입이 java.Object로 공유되므로 꺼낼때는 무조건 캐스팅해야 한다.
+
+2.요청재지정
+  1)response객체의 sendRedirect
+  2)RequestDispathcer의 forward - 서블릿에서 주로 사용	
+  3)RequestDispathcer의 include - jsp에서 주로 사용
+  
+3.sendRediret
+  1)문법
+    ServletResponse의 sendRediret 라는 메소드를 이용해서 구현
+    response.sedRedirect("요청재지정될 web application path")
+           				  ------------------------------
+           				  client부터 다시 요청해서 들어가는 것이기 때문에 path는 context까지 지정해야 한다.
+   -최초요청했던 서블릿이 response한 후 다시 재요청하는 방법이므로 데이터를 공유할 수 없다.
+   -로그인 아이디나 패스워드를 잘못입력한 경우 로그인 페이지를 다시 보여주기 위한 방법으로 주로 사용
+   -스프링으로 구축된 시스템은 기본이 forward
+   -두 번의 요청으로 처리하므로 주소표시줄이 요청재지정으로 정의한 web application의 경로로 바뀐다.
+   
+4.forward
+  -가장 일반적으로 사용되는 방법
+  -최초 요청된 서블릿이 응답되지 않고 새로은 web application을 요청한다.
+  -최초 요청받은 서블릿이 실행된 후 요청재지정으로 정의된 application으로 제어가 넘어간다.
+  -한 번의 요청으로 모든 application이 실행되므로 데이터가 공유된다.
+  -한 번의 요청으로 모든 application이 실행되므로 주소표시줄이 최초 요청된 서블릿으로 표시된다.
+  -RequestDispatcher의 forware메소드를 호출
+  
+[문법]
+RequestDispatcher re = request.getRequestDispatcher("요청재지정할 application의 path")
+													 ----------------------------
+													 response하지 않고 최초 실행된 서블릿의 실행 중에
+													 다른 application을 요청하는 것이므로 context를
+													 정의하지 않는다.
+rd.forward(request객체, response객체)
+
+
+5.include
+  -가장 일반적으로 사용되는 방법
+  -최초 요청된 서블릿이 응답되지 않고 새로은 web application을 요청한다.
+  -최초 요청받은 서블릿이 실행된 후 요청재지정으로 정의된 application이 실행되고 다시 최초요청된 서블릿으로 되돌아가서 response
+  -한 번의 요청으로 모든 application이 실행되므로 데이터가 공유된다.
+  -한 번의 요청으로 모든 application이 실행되므로 주소표시줄이 최초 요청된 서블릿으로 표시된다.
+  -RequestDispatcher의 include메소드를 호출
+  -중간에 실행결과를 포함하는 경우 사용(jsp를 실행하고 실행결과를 가지고 되돌아온다.)
+  
+[문법]
+RequestDispatcher re = request.getRequestDispatcher("요청재지정할 application의 path")
+													 ----------------------------
+													 response하지 않고 최초 실행된 서블릿의 실행 중에
+													 다른 application을 요청하는 것이므로 context를
+													 정의하지 않는다.
+rd.include(request객체, response객체)
+
+													 
 	
 	
 	

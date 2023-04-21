@@ -16,6 +16,13 @@ public class DeleteServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		System.out.println(test+":"+id);
 		
+		EmpDAO dao = new EmpDAOImpl();
+		int result = dao.delete(id);
+		System.out.println(result + "삭제");
+		
+		//요청재지정 - 목록을 출력하는 서블릿을 재요청
+		response.sendRedirect("/serverweb/emp/list.do"); //서블릿 요청했던 path
+		
 	
 	}
 

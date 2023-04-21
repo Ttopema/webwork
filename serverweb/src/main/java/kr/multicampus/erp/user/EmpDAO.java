@@ -8,6 +8,7 @@ public interface EmpDAO {
 	//전체사원 목록을 조회하는 메소드
 	public ArrayList<EmpDTO> select();
 	//사원목록을 삭제하는 메소드
+	public int delete(String id);
 	
 	
 		

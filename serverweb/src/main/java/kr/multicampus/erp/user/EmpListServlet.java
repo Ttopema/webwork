@@ -1,4 +1,4 @@
-package basic;
+package kr.multicampus.erp.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,10 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import kr.multicampus.erp.user.EmpDAO;
-import kr.multicampus.erp.user.EmpDAOImpl;
-import kr.multicampus.erp.user.EmpDTO;
 
 @WebServlet(name = "emplist", urlPatterns = {"/emp/list.do"})
 public class EmpListServlet extends HttpServlet{

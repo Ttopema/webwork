@@ -1,8 +1,9 @@
-package basic;
+package kr.multicampus.erp.user.mvc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import kr.multicampus.erp.user.EmpDAO;
 import kr.multicampus.erp.user.EmpDAOImpl;
 import kr.multicampus.erp.user.EmpDTO;
 
-@WebServlet(name = "empInsert", urlPatterns = {"/emp/insert.do"}) // url패턴은 항상 .이나 / 로 시작
+@WebServlet(name = "empInsert_mvc", urlPatterns = {"/mvc/insert.do"}) // url패턴은 항상 .이나 / 로 시작
 public class EmpInsertServlet extends HttpServlet{
 
 	@Override
@@ -32,25 +33,22 @@ public class EmpInsertServlet extends HttpServlet{
 		EmpDTO user = new EmpDTO(deptno, name, id, pass, addr, grade);
 		EmpDAO dao = new EmpDAOImpl();
 		int result = dao.insert(user);
+		//3.데이터공유
+		req.setAttribute("insertuser", name); //insertuser라는 이름으로 name에 저장하겠다는 의미임. **insertOK.jps참조
+		//4.요청 재지정
 		
-		//3.클라이언트에 응답
-//		if(result>0) {
-//			pw.println("<h1>사원등록성공</h1>");
-//		}
-//		else {
-//			pw.println("<h1>사원등록실패</h1>");
-//		}
-//	
 		//서블릿에서 바로 응답화면을 만들지 않고 응답할 뷰를 지정해서 실행되도록 처리
 		String view =""; //응답할 뷰에 대한 정보
 		if(result > 0) { //정상처리
-			view = "/serverweb/user/insertOK.html";
+			view = "/user_mvc/insertOK.jsp";
 		}
 		else { //삽입실패
-			view = "/serverweb/user/insertFail.html";
+			view = "/user_mvc/insertFail.jsp";
 		}
 		//응답뷰가 클라이언트에게 response되도록 재요청
-		resp.sendRedirect(view);
+//		resp.sendRedirect(view);
+		RequestDispatcher rd = req.getRequestDispatcher(view);
+		rd.forward(req, resp);
 	}
 
 	

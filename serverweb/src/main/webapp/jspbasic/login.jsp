@@ -8,7 +8,7 @@
 
 </head>
 <body>
-	<form name="login_frm" action="/serverweb/login.do" method="post">
+	<form name="login_frm" action="/serverweb/jspbasic/requestObj.jsp" method="post">
 		<table cellpadding="0" cellspacing=5 width="815" bgcolor=#f3f3f3
 			border=0>
 			<tr>

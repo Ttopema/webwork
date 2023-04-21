@@ -63,4 +63,29 @@ public class EmpDAOImpl implements EmpDAO {
 		return emplist;
 	}
 
+	@Override
+	public int delete(String id) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from myemp ");
+		sql.append("where id= ?");
+		Connection con = null;
+		PreparedStatement ptmt = null;
+		int result = 0;
+		try {
+			System.out.println("드라이버로딩성공!!");
+			con = DBUtil.getConnect();
+			System.out.println("커넥션성공!!:"+con);
+			ptmt =  con.prepareStatement(sql.toString());
+			ptmt.setString(1, id);
+			System.out.println("Statement객체:"+ptmt);
+			result = ptmt.executeUpdate();
+			System.out.println(result+"개 행 삭제성공!!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(null, ptmt, con);
+		}
+		return result;
+	}
+
 }
