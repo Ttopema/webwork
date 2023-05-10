@@ -1,3 +1,4 @@
+<%@page import="kr.multicampus.erp.user.EmpDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,10 @@
 <body>
 	<h4>
 		<small>즐거운 web</small>
+		<% EmpDTO user =  (EmpDTO) session.getAttribute("loginuser"); %>
+	<%if(user!=null){ %>
+	  <a href="#"><%=user.getName() %>
+	<%} %> 님 환영합니다.</a>
 	</h4>
 	<hr>
 	<div class="col-sm-10">

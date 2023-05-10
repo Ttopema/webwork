@@ -49,17 +49,17 @@ public class EmpDAOImpl implements EmpDAO {
 			con = DBUtil.getConnect();
 			ptmt = con.prepareStatement(sql);
 			rs = ptmt.executeQuery();
-			while(rs.next()) {
-				emp = new EmpDTO(rs.getString(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5),rs.getInt(6), rs.getString(7));
+			while (rs.next()) {
+				emp = new EmpDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7));
 				emplist.add(emp);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DBUtil.close(rs, ptmt, con);
 		}
-		
+
 		return emplist;
 	}
 
@@ -74,18 +74,72 @@ public class EmpDAOImpl implements EmpDAO {
 		try {
 			System.out.println("드라이버로딩성공!!");
 			con = DBUtil.getConnect();
-			System.out.println("커넥션성공!!:"+con);
-			ptmt =  con.prepareStatement(sql.toString());
+			System.out.println("커넥션성공!!:" + con);
+			ptmt = con.prepareStatement(sql.toString());
 			ptmt.setString(1, id);
-			System.out.println("Statement객체:"+ptmt);
+			System.out.println("Statement객체:" + ptmt);
 			result = ptmt.executeUpdate();
-			System.out.println(result+"개 행 삭제성공!!");
+			System.out.println(result + "개 행 삭제성공!!");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DBUtil.close(null, ptmt, con);
 		}
 		return result;
+	}
+
+	@Override
+	public EmpDTO read(String id) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from myemp ");
+		sql.append("where id=?");
+		Connection con = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		EmpDTO emp = null;
+
+		try {
+			con = DBUtil.getConnect();
+			ptmt = con.prepareStatement(sql.toString());
+			ptmt.setString(1, id);
+			rs = ptmt.executeQuery();
+			if (rs.next()) {
+				emp = new EmpDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, ptmt, con);
+		}
+		return emp;
+	}
+
+	@Override
+	public EmpDTO login(String id, String pass) {
+//		StringBuffer sql = new StringBuffer();
+//		sql.append("select * from myemp ");
+//		sql.append("where id=?");
+		String sql = "select * from myemp where id=? and pass=?";
+		Connection con = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		EmpDTO emp = null;
+
+		try {
+			con = DBUtil.getConnect();
+			ptmt = con.prepareStatement(sql);
+			ptmt.setString(1, id);
+			ptmt.setString(2, pass);
+			rs = ptmt.executeQuery();
+			if(rs.next()) {
+				emp = new EmpDTO(rs.getString(1), rs.getString(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getInt(6),rs.getString(7));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return emp;
 	}
 
 }

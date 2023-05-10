@@ -9,6 +9,10 @@ public interface EmpDAO {
 	public ArrayList<EmpDTO> select();
 	//사원목록을 삭제하는 메소드
 	public int delete(String id);
+	//사원 상세정보 조회하는 메소드
+	public EmpDTO read(String id);
+	//로그인
+	public EmpDTO login(String id, String pass);
 	
 	
 		

@@ -32,9 +32,7 @@ public class EmpDTO {
 		this.addr = addr;
 		this.grade = grade;
 	}
-	
-	
-	
+
 	//select용
 	public EmpDTO(String deptno, String name, String id, String pass, String addr, int point, String grade) {
 		this(deptno, name, id, pass, addr, grade);

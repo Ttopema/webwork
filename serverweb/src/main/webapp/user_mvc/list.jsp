@@ -38,7 +38,7 @@ int size = userlist.size();
 					<tr>
 						<td><%=emp.getDeptno()%></td>
 						<td><%=emp.getName()%></td>
-						<td><%=emp.getId()%></td>
+						<td><a href="/serverweb/mvc/read.do?id=<%=emp.getId() %>"><%=emp.getId()%></a></td>
 						<td><%=emp.getPass()%></td>
 						<td><%=emp.getAddr()%></td>
 						<td><%=emp.getPoint()%></td>

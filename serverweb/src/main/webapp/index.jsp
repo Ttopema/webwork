@@ -1,3 +1,4 @@
+<%@page import="kr.multicampus.erp.user.EmpDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,6 +46,10 @@
 </head>
 <body>
 	<jsp:include page="top.jsp"/>
+	<% EmpDTO user =  (EmpDTO) request.getAttribute("loginuser"); %>
+	<%if(user!=null){ %>
+		<%=user.getName() %>
+	<%} %>
 	<div class="container-fluid"></div>
 	<div class="row">
 		<div class="col-lg-2 sidenav">
